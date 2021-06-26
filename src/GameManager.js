@@ -6,7 +6,6 @@ class GameManager{
         this.logMessage("What do you do?");
         this.logMessage(">attack");
         this.logMessage(">defend");
-        this.logMessage("(type 'gameManager.takeAction([command]);')");
     }
 
     takeAction(command){
@@ -25,3 +24,19 @@ class GameManager{
 }
 
 let gameManager = new GameManager();
+
+let lastCommand = "";
+$("txtCommand").onkeyup = function(e){
+    //ENTER key
+    if (e.keyCode == 13){
+        lastCommand = $("txtCommand").value;
+        gameManager.takeAction($("txtCommand").value);
+        $("txtCommand").value = "";
+    }
+    //up arrow
+    if (e.keyCode == 38){
+        let switchVar = $("txtCommand").value;
+        $("txtCommand").value = lastCommand;
+        lastCommand = switchVar;
+    }
+}
