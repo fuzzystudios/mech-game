@@ -4,15 +4,21 @@ class GameManager{
     constructor(){
         this.logMessage("You are entering into battle against another mech.");
         this.logMessage("What do you do?");
-        this.logMessage(">attack");
-        this.logMessage(">defend");
+        this.logMessage("- attack");
+        this.logMessage("- defend");
+        this.logMessage("- divert attack 50");
+        this.logMessage("- divert shields 50");
     }
 
-    takeAction(command){
-        let action = interpreter.interpretString(command);
-        switch(action){
+    takeAction(commandString){
+        this.logMessage(">> " + commandString);
+        let command = interpreter.interpretString(commandString);
+        switch(command.action){
             case COMMAND_ATTACK: mechaController.attack(battle.mecha1, battle.mecha2); break;
             case COMMAND_DEFEND: this.logMessage("Not implemented yet."); break;
+            case COMMAND_DIVERT:
+                battle.mecha1.powerDiverter.divertPower(command.system, command.amount);
+                break;
         }
         this.logMessage("Your health: ("+battle.mecha1.health+", "+battle.mecha1.shields+")");
         this.logMessage("Enemy health: ("+battle.mecha2.health+", "+battle.mecha2.shields+")");
