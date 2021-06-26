@@ -20,7 +20,7 @@ class GameManager{
     }
 
     logMessage(message){
-        console.log(message);
+        $("lblLog").innerHTML += message+"<br>";
     }
 }
 
