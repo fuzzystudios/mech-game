@@ -30,15 +30,13 @@ class GameManager{
         mechaController.attack(battle.mecha2, battle.mecha1);
         mechaController.regenShields(battle.mecha1);
         mechaController.regenShields(battle.mecha2);
+        this.logMessage("Your health: ("+battle.mecha1.health+", "+battle.mecha1.shields+")");
+        this.logMessage("Enemy health: ("+battle.mecha2.health+", "+battle.mecha2.shields+")");
         if (battle.mecha1.health == 0){
             this.logMessage("Enemy wins!");
         }
-        else if (battle.mecha2.health == 0){
+        if (battle.mecha2.health == 0){
             this.logMessage("You win!");
-        }
-        else{
-            this.logMessage("Your health: ("+battle.mecha1.health+", "+battle.mecha1.shields+")");
-            this.logMessage("Enemy health: ("+battle.mecha2.health+", "+battle.mecha2.shields+")");
         }
     }
 
