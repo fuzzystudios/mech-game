@@ -4,24 +4,39 @@ class GameManager{
     constructor(){
         this.logMessage("You are entering into battle against another mech.");
         this.logMessage("What do you do?");
-        this.logMessage("- attack");
-        this.logMessage("- defend");
         this.logMessage("- divert attack 50");
         this.logMessage("- divert shields 50");
+        this.logMessage("- go");
     }
 
     takeAction(commandString){
         this.logMessage(">> " + commandString);
         let command = interpreter.interpretString(commandString);
         switch(command.action){
-            case COMMAND_ATTACK: mechaController.attack(battle.mecha1, battle.mecha2); break;
-            case COMMAND_DEFEND: this.logMessage("Not implemented yet."); break;
+            case COMMAND_GO: this.processGameStep(); break;
             case COMMAND_DIVERT:
                 battle.mecha1.powerDiverter.divertPower(command.system, command.amount);
                 break;
         }
-        this.logMessage("Your health: ("+battle.mecha1.health+", "+battle.mecha1.shields+")");
-        this.logMessage("Enemy health: ("+battle.mecha2.health+", "+battle.mecha2.shields+")");
+    }
+
+    processGameStep(){
+        mechaController.attack(battle.mecha1, battle.mecha2);
+        mechaController.attack(battle.mecha1, battle.mecha2);
+        mechaController.attack(battle.mecha2, battle.mecha1);
+        mechaController.attack(battle.mecha2, battle.mecha1);
+        mechaController.regenShields(battle.mecha1);
+        mechaController.regenShields(battle.mecha2);
+        if (battle.mecha1.health == 0){
+            this.logMessage("Enemy wins!");
+        }
+        else if (battle.mecha2.health == 0){
+            this.logMessage("You win!");
+        }
+        else{
+            this.logMessage("Your health: ("+battle.mecha1.health+", "+battle.mecha1.shields+")");
+            this.logMessage("Enemy health: ("+battle.mecha2.health+", "+battle.mecha2.shields+")");
+        }
     }
 
     logMessage(message){

@@ -1,8 +1,7 @@
 "use strict";
 
-const COMMAND_ATTACK = 0;
-const COMMAND_DEFEND = 1;
-const COMMAND_DIVERT = 2;
+const COMMAND_GO = 0;
+const COMMAND_DIVERT = 1;
 
 class Interpreter{
     constructor(){
@@ -13,8 +12,7 @@ class Interpreter{
         let commands = commandString.toLowerCase().split(" ");
         let command = {};
         switch(commands[0]){
-            case "attack": command.action = COMMAND_ATTACK; break;
-            case "defend": command.action = COMMAND_DEFEND; break;
+            case "go": command.action = COMMAND_GO; break;
             case "divert":
                 command.action = COMMAND_DIVERT;
                 switch(commands[1]){
