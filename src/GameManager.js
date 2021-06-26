@@ -18,6 +18,9 @@ class GameManager{
                 battle.mecha1.powerDiverter.divertPower(command.system, command.amount);
                 break;
         }
+        //2021-06-26: copied from https://stackoverflow.com/a/33193668/2336212
+        let element = $("lblLog");
+        element.scrollTop = element.scrollHeight - element.clientHeight;
     }
 
     processGameStep(){
