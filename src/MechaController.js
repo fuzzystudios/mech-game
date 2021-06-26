@@ -18,6 +18,13 @@ class MechaController{
             }
         }
     }
+
+    regenShields(mecha){
+        mecha.shields += mecha.shieldRegen * mecha.powerDiverter.divertList[SYSTEM_SHIELDS] / 100;
+        if (mecha.shields > 100){
+            mecha.shields = 100;
+        }
+    }
 }
 
 let mechaController = new MechaController();
