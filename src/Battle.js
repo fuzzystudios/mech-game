@@ -2,8 +2,8 @@
 
 class Battle{
     constructor(){
-        this.mecha1 = new Mecha();
-        this.mecha2 = new Mecha();
+        this.mecha1 = createMecha();
+        this.mecha2 = createMecha();
     }
 }
 

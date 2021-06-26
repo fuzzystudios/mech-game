@@ -3,8 +3,9 @@
 class MechaController{
     constructor(){}
 
-    attack(attacker, defender){
-        let attackPower = attacker.attack * attacker.powerDiverter.divertList[SYSTEM_ATTACK] / 100;
+    attack(attacker, weapon, defender){
+        let attackPower = weapon.attackPower
+            * attacker.powerDiverter.divertList[SYSTEM_ATTACK] / 100;
         if (defender.shields > 0){
             defender.shields -= attackPower;
             defender.shields = round2(defender.shields);
@@ -21,8 +22,9 @@ class MechaController{
         }
     }
 
-    regenShields(mecha){
-        mecha.shields += mecha.shieldRegen * mecha.powerDiverter.divertList[SYSTEM_SHIELDS] / 100;
+    regenShields(mecha, shieldgen){
+        mecha.shields += shieldgen.shieldRegen
+            * mecha.powerDiverter.divertList[SYSTEM_SHIELDS] / 100;
         mecha.shields = round2(mecha.shields);
         if (mecha.shields > 100){
             mecha.shields = 100;

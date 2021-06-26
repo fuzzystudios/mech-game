@@ -24,12 +24,18 @@ class GameManager{
     }
 
     processGameStep(){
-        mechaController.attack(battle.mecha1, battle.mecha2);
-        mechaController.attack(battle.mecha1, battle.mecha2);
-        mechaController.attack(battle.mecha2, battle.mecha1);
-        mechaController.attack(battle.mecha2, battle.mecha1);
-        mechaController.regenShields(battle.mecha1);
-        mechaController.regenShields(battle.mecha2);
+        battle.mecha1.getWeapons().forEach(w =>
+            mechaController.attack(battle.mecha1, w, battle.mecha2)
+        );
+        battle.mecha2.getWeapons().forEach(w =>
+            mechaController.attack(battle.mecha2, w, battle.mecha1)
+        );
+        battle.mecha1.getShields().forEach(s =>
+            mechaController.regenShields(battle.mecha1, s)
+        );
+        battle.mecha2.getShields().forEach(s =>
+            mechaController.regenShields(battle.mecha2, s)
+        );
         this.logMessage("Your health: ("+battle.mecha1.health+", "+battle.mecha1.shields+")");
         this.logMessage("Enemy health: ("+battle.mecha2.health+", "+battle.mecha2.shields+")");
         if (battle.mecha1.health == 0){
