@@ -6,6 +6,10 @@ class GameManager{
         this.logMessage("What do you do?");
         this.logMessage("- divert attack 50");
         this.logMessage("- divert shields 50");
+        this.logMessage("- inspect");
+        this.logMessage("- install weapon 10");
+        this.logMessage("- install shields 7");
+        this.logMessage("- uninstall 1");
         this.logMessage("- go");
     }
 
