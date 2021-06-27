@@ -27,6 +27,10 @@ class Mecha{
     getShields(){
         return this.components.filter(s => s.typeID == COMPONENT_SHIELDS);
     }
+
+    removeComponent(index){
+        this.components.splice(index, 1);
+    }
 }
 
 function createMecha(){

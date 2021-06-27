@@ -34,6 +34,9 @@ class Interpreter{
                 }
                 command.power = commands[2] * 1;
                 break;
+            case "uninstall":
+                command.action = COMMAND_UNINSTALL;
+                command.index = (commands[1] * 1) - 1;
         }
         return command;
     }
