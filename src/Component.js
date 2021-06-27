@@ -17,6 +17,11 @@ class Component{
     }
 }
 
+function createComponent(typeID, power){
+    switch(typeID){
+        case COMPONENT_WEAPON: return createWeapon(power);
+        case COMPONENT_SHIELDS: return createShields(power);
+    }
 }
 
 function createWeapon(attackPower){

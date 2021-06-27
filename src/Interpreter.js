@@ -3,6 +3,8 @@
 const COMMAND_GO = 0;
 const COMMAND_DIVERT = 1;
 const COMMAND_INSPECT = 2;
+const COMMAND_INSTALL = 3;
+const COMMAND_UNINSTALL = 4;
 
 class Interpreter{
     constructor(){
@@ -24,6 +26,14 @@ class Interpreter{
                 break;
             case "inspect":
                 command.action = COMMAND_INSPECT; break;
+            case "install":
+                command.action = COMMAND_INSTALL;
+                switch(commands[1]){
+                    case "weapon": command.component = COMPONENT_WEAPON; break;
+                    case "shields": command.component = COMPONENT_SHIELDS; break;
+                }
+                command.power = commands[2] * 1;
+                break;
         }
         return command;
     }
