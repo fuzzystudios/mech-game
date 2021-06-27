@@ -2,6 +2,7 @@
 
 const COMMAND_GO = 0;
 const COMMAND_DIVERT = 1;
+const COMMAND_INSPECT = 2;
 
 class Interpreter{
     constructor(){
@@ -20,6 +21,9 @@ class Interpreter{
                     case "shields": command.system = SYSTEM_SHIELDS; break;
                 }
                 command.amount = commands[2] * 1;
+                break;
+            case "inspect":
+                command.action = COMMAND_INSPECT; break;
         }
         return command;
     }

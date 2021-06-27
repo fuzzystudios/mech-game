@@ -9,6 +9,17 @@ class Mecha{
         this.components = [];
     }
 
+    listComponents(){
+        let result = "";
+        for (let i = 0; i < this.components.length; i++){
+            result += (i+1) + ": " + this.components[i].toString();
+            if (i < this.components.length-1){
+                result += "<br>";
+            }
+        }
+        return result;
+    }
+
     getWeapons(){
         return this.components.filter(w => w.typeID == COMPONENT_WEAPON);
     }

@@ -8,6 +8,15 @@ class Component{
         this.weight = 10;
         this.typeID;
     }
+
+    toString(){
+        switch(this.typeID){
+            case COMPONENT_WEAPON: return "Weapon - " + this.attackPower;
+            case COMPONENT_SHIELDS: return "Shields - " + this.shieldRegen;
+        }
+    }
+}
+
 }
 
 function createWeapon(attackPower){

@@ -17,6 +17,7 @@ class GameManager{
             case COMMAND_DIVERT:
                 battle.mecha1.powerDiverter.divertPower(command.system, command.amount);
                 break;
+            case COMMAND_INSPECT: this.logMessage(battle.mecha1.listComponents());
         }
         //2021-06-26: copied from https://stackoverflow.com/a/33193668/2336212
         let element = $("lblLog");
